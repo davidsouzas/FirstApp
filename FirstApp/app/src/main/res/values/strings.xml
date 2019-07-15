@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FirstApp</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="btnLimpar">Limpar</string>
+    <string name="btn_resetar">Resetar</string>
+    <string name="txt_Login">Login</string>
+    <string name="txt_Senha">Senha</string>
+</resources>
