@@ -26,6 +26,7 @@ public class TelaActivity extends AppCompatActivity {
         buttonReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onBackPressed();
                //Intent intent = new Intent(this, MainActivity.class);
                // startActivity(intent);
             }
