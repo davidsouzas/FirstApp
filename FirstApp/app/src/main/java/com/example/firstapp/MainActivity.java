@@ -1,13 +1,20 @@
 package com.example.firstapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.firstapp.database.DadosOpenHelper;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.w3c.dom.Text;
 
@@ -20,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText editSenha;
     private TextView login;
     private TextView senha;
+    private SQLiteDatabase conexao;
+    private DadosOpenHelper dadosOpenHelper;
+    private ConstraintLayout layout_main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        layout_main = (ConstraintLayout)findViewById(R.id.layout_main);
         buttonLimpar = (Button)findViewById(R.id.buttonLimpar);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonResetar = (Button) findViewById(R.id.buttonResetar);
@@ -41,13 +51,38 @@ public class MainActivity extends AppCompatActivity {
                 editSenha.setText("");
             }
         });
+
+        criarConexao();
+    }
+
+    private void criarConexao(){
+        try {
+            dadosOpenHelper = new DadosOpenHelper(this);
+            conexao = dadosOpenHelper.getWritableDatabase();
+            Snackbar.make(layout_main, getString(R.string.message_conexao_success), Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+
+        }catch (SQLException ex){
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle("Erro");
+            dlg.setMessage(ex.getMessage());
+            dlg.setNeutralButton(getString(R.string.message_ok), null);
+            dlg.show();
+        }
     }
     public void confirmar(View view){
-        login.setText(editLogin.getText());
-        senha.setText(editSenha.getText());
+        //login.setText(editLogin.getText());
+        //senha.setText(editSenha.getText());
+
+        String _login = editLogin.getText().toString();
+        String _senha = editSenha.getText().toString();
+
+        if (_login.isEmpty() || _senha.isEmpty()){
+            Snackbar.make(view, "Campo vazio", Snackbar.LENGTH_LONG).show();
+        }
 
         Intent intent = new Intent(this, TelaActivity.class);
-        intent.putExtra("login", login.getText());
+        intent.putExtra("login", editLogin.getText());
+        intent.putExtra("senha", editSenha.getText());
         startActivity(intent);
     }
 
