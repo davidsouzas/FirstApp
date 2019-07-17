@@ -2,9 +2,10 @@
     <string name="app_name">FirstApp</string>
     <string name="btn_entrar">Entrar</string>
     <string name="btnLimpar">Limpar</string>
-    <string name="btn_resetar">Resetar</string>
+    <string name="btn_registrar">Registrar</string>
     <string name="txt_Login">Login</string>
     <string name="txt_Senha">Senha</string>
     <string name="message_conexao_success">Conexão Bem Sucessida!</string>
     <string name="message_ok">OK</string>
+    <string name="txt_nome">Nome</string>
 </resources>

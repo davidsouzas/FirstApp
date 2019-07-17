@@ -31,8 +31,6 @@ public class TelaActivity extends AppCompatActivity {
                 onBackPressed();
                //Intent intent = new Intent(this, MainActivity.class);
                // startActivity(intent);
-
-
             }
         });
 

@@ -78,16 +78,17 @@ public class MainActivity extends AppCompatActivity {
 
         if (_login.isEmpty() || _senha.isEmpty()){
             Snackbar.make(view, "Campo vazio", Snackbar.LENGTH_LONG).show();
-        }
+        }else {
 
-        Intent intent = new Intent(this, TelaActivity.class);
-        intent.putExtra("login", editLogin.getText());
-        intent.putExtra("senha", editSenha.getText());
-        startActivity(intent);
+            Intent intent = new Intent(this, TelaActivity.class);
+            intent.putExtra("login", editLogin.getText());
+            intent.putExtra("senha", editSenha.getText());
+            startActivity(intent);
+        }
     }
 
-    public void resetar(View view){
-        login.setText(getText(R.string.txt_Login));
-        senha.setText(getText(R.string.txt_Senha));
+    public void registrar(View view){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }
