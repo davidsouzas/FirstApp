@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.firstapp.database.DadosOpenHelper;
+import com.example.firstapp.dominio.entidades.Cliente;
+import com.example.firstapp.dominio.repositorio.ClienteRepositorio;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.w3c.dom.Text;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private DadosOpenHelper dadosOpenHelper;
     private ConstraintLayout layout_main;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,11 +83,31 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(view, "Campo vazio", Snackbar.LENGTH_LONG).show();
         }else {
 
-            Intent intent = new Intent(this, TelaActivity.class);
-            intent.putExtra("login", editLogin.getText());
-            intent.putExtra("senha", editSenha.getText());
-            startActivity(intent);
+            ClienteRepositorio clienteRepositorio = new ClienteRepositorio(conexao);
+            Cliente user  = clienteRepositorio.buscar(_login, _senha);
+
+            if (user != null){
+
+                Intent intent = new Intent(this, TelaActivity.class);
+                intent.putExtra("login", editLogin.getText());
+                intent.putExtra("senha", editSenha.getText());
+                startActivity(intent);
+            }else{
+                Snackbar.make(view, "Usuário ou Senha inválidos", Snackbar.LENGTH_LONG).show();
+            }
+
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(editLogin != null && editSenha != null){
+            editLogin.setText("");
+            editSenha.setText("");
+        }
+
     }
 
     public void registrar(View view){

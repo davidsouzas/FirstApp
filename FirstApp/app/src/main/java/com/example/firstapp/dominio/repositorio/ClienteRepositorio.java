@@ -16,7 +16,7 @@ public class ClienteRepositorio {
 
     public void inserir(Cliente cliente){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("LOGIN", cliente.Nome);
+        contentValues.put("Login", cliente.Login);
         contentValues.put("Senha", cliente.Senha);
         contentValues.put("Nome", cliente.Nome);
 
@@ -43,7 +43,7 @@ public class ClienteRepositorio {
 
     }
 
-    public Cliente buscar(string login, string senha){
+    public Cliente buscar(String login, String senha){
         Cliente cliente = new Cliente();
 
         String selectQuery = "SELECT * FROM USERCLIENT " + "WHERE LOGIN = '" + login + "'" + "AND SENHA = '" + senha + "'";
@@ -56,7 +56,8 @@ public class ClienteRepositorio {
             cliente.Nome = resultado.getString( resultado.getColumnIndexOrThrow("NOME"));
             cliente.Code = resultado.getInt( resultado.getColumnIndexOrThrow("CODE"));
             return cliente;
-        }else
+        }else{
             return null;
+        }
     }
 }
