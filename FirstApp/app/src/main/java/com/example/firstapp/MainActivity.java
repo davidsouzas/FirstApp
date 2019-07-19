@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(this, TelaActivity.class);
                 intent.putExtra("login", editLogin.getText());
-                intent.putExtra("senha", editSenha.getText());
+                intent.putExtra("nome", user.Nome);
                 startActivity(intent);
             }else{
                 Snackbar.make(view, "Usuário ou Senha inválidos", Snackbar.LENGTH_LONG).show();

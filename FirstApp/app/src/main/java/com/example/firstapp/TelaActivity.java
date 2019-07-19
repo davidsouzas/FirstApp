@@ -14,6 +14,7 @@ public class TelaActivity extends AppCompatActivity {
 
     private TextView labelnome;
     private String _labelsenha;
+    private Button buttoncadastroap;
     private FloatingActionButton buttonReturn;
 
     @Override
@@ -34,9 +35,16 @@ public class TelaActivity extends AppCompatActivity {
             }
         });
 
+        labelnome.setText(getIntent().getExtras().get("nome").toString());
+    }
 
+    public void Cadastrar(View view){
+        Intent intent = new Intent(this, CdapostasActivity.class);
+        startActivity(intent);
+    }
 
-        labelnome.setText(getIntent().getExtras().get("login").toString());
-
+    public  void Consultar(View view){
+        Intent intent = new Intent(this, ConsultarApActivity.class);
+        startActivity(intent);
     }
 }
