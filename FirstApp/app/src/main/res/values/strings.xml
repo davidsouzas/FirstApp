@@ -10,4 +10,9 @@
     <string name="txt_nome">Nome</string>
     <string name="btn_cadastraraposta">Cadastrar Aposta</string>
     <string name="btn_consultarapostas">Consultar Suas Apostas</string>
+    <string name="txt_Team1">1º Time</string>
+    <string name="txt_Team2">2º Time</string>
+    <string name="txt_qntap">Quantidade apostada</string>
+    <string name="txt_valorret">Valor de Retirada</string>
+    <string name="btn_confirmar">Confirmar</string>
 </resources>
