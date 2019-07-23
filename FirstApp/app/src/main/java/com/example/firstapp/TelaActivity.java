@@ -14,6 +14,7 @@ public class TelaActivity extends AppCompatActivity {
 
     private TextView labelnome;
     private String _labelsenha;
+    private Integer _labelcode;
     private Button buttoncadastroap;
     private FloatingActionButton buttonReturn;
 
@@ -40,6 +41,8 @@ public class TelaActivity extends AppCompatActivity {
 
     public void Cadastrar(View view){
         Intent intent = new Intent(this, CdapostasActivity.class);
+        _labelcode = Integer.parseInt(getIntent().getExtras().get("code").toString());
+        intent.putExtra("code", _labelcode);
         startActivity(intent);
     }
 

@@ -20,7 +20,7 @@ public class ScriptDLL {
         sql.append(" TIME2 VARCHAR(35) NOT NULL DEFAULT (''), ");
         sql.append(" VALORAPOSTADO FLOAT NOT NULL DEFAULT '0', ");
         sql.append(" VALORRETORNO FLOAT NOT NULL DEFAULT '0', ");
-        sql.append(" CODIGOADOPOSTADOR INTEGER NOT NULL DEFAULT '0', ");
+        sql.append(" CODIGODOAPOSTADOR INTEGER NOT NULL DEFAULT '0', ");
         sql.append(" CODIGO INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         return  sql.toString();
     }
